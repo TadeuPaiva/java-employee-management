@@ -28,9 +28,13 @@ public class Main {
         funcionarios.add(productManager);
         funcionarios.add(devOps);
 
+        double totalPagamento = 0;
         for (Funcionario funcionario : funcionarios) { // Percorre a lista, atribuindo cada funcionário à variável funcionario a cada repetição.
             funcionario.exibirRelatorio(); // Exibe o relatório do funcionário atual, usando os métodos implementados pela sua classe concreta.
+            totalPagamento = totalPagamento + funcionario.calcularSalario(); // Soma a folha salarial da empresa
         }
 
+        System.out.println("Total funcionários: " + funcionarios.size());
+        System.out.println("Total folha de pagamento: " + totalPagamento);
     }
 }
