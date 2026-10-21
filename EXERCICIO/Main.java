@@ -79,3 +79,4 @@ public class Main {
         System.out.println("O funcionário com o maior salário é: " + funcionarioMaiorSalario);
     }
 }
+
