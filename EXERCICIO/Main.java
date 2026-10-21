@@ -43,6 +43,8 @@ public class Main {
         // Variavel do tipo funcionario, classe abstrata não podemos usar o 'new Funcionario();'
         // também 'não podemos' instanciar como Desenvolvedor, DevOps, etc, por não sabermos quem recebe o maior salario
 
+        List<Funcionario> funcionarioAcimaDezMil = new ArrayList<>();
+
         for (Funcionario funcionario : funcionarios) { // Percorre a lista, atribuindo cada funcionário à variável funcionario a cada repetição.
             funcionario.exibirRelatorio(); // Exibe o relatório do funcionário atual, usando os métodos implementados pela sua classe concreta.
             totalPagamento = totalPagamento + funcionario.calcularSalario(); // Soma a folha salarial da empresa
@@ -72,11 +74,18 @@ public class Main {
             System.out.println("Quantidade desenvolvedor: " + qtdeDesenvolvedor);
             System.out.println("Quantidade product manager: " + qtdeProductManager);
             System.out.println("Quantidade devops: " + qtdeDevOps);
+
+            if (funcionario.calcularSalario() > 10000) {
+                funcionarioAcimaDezMil.add(funcionario);
+                // Caso a verificação seja true, adicionamos o valor a variável
+            }
         }
 
         System.out.println("Total funcionários: " + funcionarios.size());
         System.out.println("Total folha de pagamento: " + totalPagamento);
         System.out.println("O funcionário com o maior salário é: " + funcionarioMaiorSalario);
+
+        System.out.println(funcionarioAcimaDezMil);
     }
 }
 
