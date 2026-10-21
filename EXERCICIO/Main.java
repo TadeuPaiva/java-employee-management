@@ -39,9 +39,23 @@ public class Main {
 
         double totalPagamento = 0;
 
+        Funcionario funcionarioMaiorSalario = null;
+        // Variavel do tipo funcionario, classe abstrata não podemos usar o 'new Funcionario();'
+        // também 'não podemos' instanciar como Desenvolvedor, DevOps, etc, por não sabermos quem recebe o maior salario
+
         for (Funcionario funcionario : funcionarios) { // Percorre a lista, atribuindo cada funcionário à variável funcionario a cada repetição.
             funcionario.exibirRelatorio(); // Exibe o relatório do funcionário atual, usando os métodos implementados pela sua classe concreta.
             totalPagamento = totalPagamento + funcionario.calcularSalario(); // Soma a folha salarial da empresa
+
+            if (funcionarioMaiorSalario == null) { // sendo nulo, irá pegar o primeiro funcionario e armazenar na variável e depois verificar novamente
+                funcionarioMaiorSalario = funcionario;
+            } else { // Na segunda vez não será nulo e cairá aqui no else
+                if (funcionario.calcularSalario() > funcionarioMaiorSalario.calcularSalario()) {
+                    // validamos se o salário do funcionario na segunda iteração tem o salário maior que o funcionario que está armazenado na variavel maior salario
+                    funcionarioMaiorSalario = funcionario;
+                    // se for, a var c maior salario passa a receber este novo funcionário
+                }
+            }
 
             if (funcionario instanceof Desenvolvedor) {
                 qtdeDesenvolvedor++;
@@ -62,5 +76,6 @@ public class Main {
 
         System.out.println("Total funcionários: " + funcionarios.size());
         System.out.println("Total folha de pagamento: " + totalPagamento);
+        System.out.println("O funcionário com o maior salário é: " + funcionarioMaiorSalario);
     }
 }
